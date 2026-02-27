@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BaristaBot Pro - Café & Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   <body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#fdfdfd; color:#333; }
+    header { background:#111; color:#fff; padding:20px; text-align:center; }
+    nav { background:#333; padding:10px; text-align:center; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; }
+    section { padding:20px; }
+    .menu-item { border-bottom:1px solid #ddd; padding:10px 0; }
+    .barista, .chef { display:inline-block; width:22%; margin:1%; background:#fafafa; padding:15px; border-radius:8px; text-align:center; }
+    .status { font-weight:bold; color:#007bff; }
+    .punchline { font-style:italic; color:#444; margin-top:20px; text-align:center; }
+    button { background:#007bff; color:#fff; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+    .feedback { margin-top:20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>☕ BaristaBot Pro - Café & Restaurant</h1>
+    <p>Where Coffee Meets Crypto Culture</p>
+  </header>
+
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#baristas">Baristas</a>
+    <a href="#chefs">Chefs</a>
+    <a href="#order">Order</a>
+    <a href="#education">Learn</a>
+  </nav>
+
+  <!-- Restaurant Menu -->
+  <section id="menu">
+    <h2>🍽️ Restaurant Menu</h2>
+    <div class="menu-item">
+      <h3>Espresso - $3</h3>
+      <p>Origin: Kenyan Highlands | Sizes: 1-4 cups</p>
+      <label>Quantity: <input type="number" min="1" max="4" value="1"></label>
+      <button>Add to Order</button>
+    </div>
+    <div class="menu-item">
+      <h3>Latte - $4</h3>
+      <p>Origin: Ethiopian Yirgacheffe | Extras: Oat Milk, Syrups</p>
+      <label>Quantity: <input type="number" min="1" max="4" value="1"></label>
+      <button>Add to Order</button>
+    </div>
+    <div class="menu-item">
+      <h3>Cappuccino - $4.50</h3>
+      <p>Origin: Colombian Huila | Extras: Chocolate, Almond Milk</p>
+      <label>Quantity: <input type="number" min="1" max="4" value="1"></label>
+      <button>Add to Order</button>
+    </div>
+    <div class="menu-item">
+      <h3>Mocha - $5</h3>
+      <p>Rich chocolate blend | Sizes: 1-4 cups</p>
+      <label>Quantity: <input type="number" min="1" max="4" value="1"></label>
+      <button>Add to Order</button>
+    </div>
+    <div class="menu-item">
+      <h3>Cold Brew - $4</h3>
+      <p>Slow brewed, smooth finish</p>
+      <label>Quantity: <input type="number" min="1" max="4" value="1"></label>
+      <button>Add to Order</button>
+    </div>
+  </section>
+
+  <!-- Barista Profiles -->
+  <section id="baristas">
+    <h2>👩‍🍳 Meet Our Baristas</h2>
+    <div class="barista"><h3>Dennis</h3><p>Kenyan AA Roast Specialist</p></div>
+    <div class="barista"><h3>Ian</h3><p>Cold Brew Master</p></div>
+    <div class="barista"><h3>Nina</h3><p>Latte Art & Specialty Drinks</p></div>
+    <div class="barista"><h3>Melinda</h3><p>Espresso & Premium Blends</p></div>
+  </section>
+
+  <!-- Chef Profiles -->
+  <section id="chefs">
+    <h2>👨‍🍳 Meet Our Chefs</h2>
+    <div class="chef"><h3>Chef Milano</h3><p>Italian Cuisine Specialist</p></div>
+    <div class="chef"><h3>Chef Estavo</h3><p>Latin Fusion Master</p></div>
+  </section>
+
+  <!-- Ordering & Payment -->
+  <section id="cart">
+  <h2>🛍️ Your Cart</h2>
+  <ul id="cart-items"></ul>
+  <p>Total: $<span id="cart-total">0</span></p>
+  <button onclick="checkout()">Proceed to Payment</button>
+</section>
+  <section id="order">
+    <h2>🛒 Place Your Order</h2>
+    <p>Status: <span class="status">Pending</span></p>
+    <button onclick="confirmOrder()">Confirm Order</button>
+    <button onclick="readyOrder()">Order Ready</button>
+    <button onclick="deliverOrder()">Mark as Delivered</button>
+    <h3>Payment Options</h3>
+    <ul>
+      <li>M-Pesa (STK Push)</li>
+      <li>USD / Major Currencies</li>
+      <li>Crypto Cards (Visa, PayPal, Wallets)</li>
+    </ul>
+    <h3>Tipping</h3>
+    <section id="tipping">
+  <h2>💰 Tip Your Barista</h2>
+  <select id="barista-select">
+    <option>Dennis</option>
+    <option>Ian</option>
+    <option>Nina</option>
+    <option>Melinda</option>
+    <option>Chef Milano</option>
+    <option>Chef Estavo</option>
+  </select>
+  <input type="number" placeholder="Amount in COFFEE tokens">
+  <button onclick="sendTip()">Send Tip</button>
+</section>
+
+<section id="feedback">
+  <h2>⭐ Customer Feedback</h2>
+  <label>Rate your experience: 
+    <select>
+      <option>5 - Excellent</option>
+      <option>4 - Good</option>
+      <option>3 - Average</option>
+      <option>2 - Poor</option>
+      <option>1 - Terrible</option>
+    </select>
+  </label>
+  <textarea placeholder="Leave your suggestion..."></textarea>
+  <button>Submit Feedback</button>
+</section>
+    
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <h2>📚 Learn & Earn</h2>
+    <p>💡 How to Tip in Crypto</p>
+    <p>💡 What are Crypto Rewards?</p>
+    <p>💡 Coffee Going Onchain</p>
+    <p>💡 Health Benefits of Coffee</p>
+  </section>
+
+  <!-- Punchline Atmosphere -->
+  <div class="punchline" id="punchline">"Stay true, the vibe will carry you."</div>
+
+  <script>
+    const punchlines = [
+      "Dream big, sip slow, build strong.",
+      "Coffee fuels the grind, crypto fuels the future.",
+      "Every sip is a vote for culture.",
+      "Stay true, the vibe will carry you."
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % punchlines.length;
+      document.getElementById("punchline").innerText = punchlines[index];
+    }, 10000);
+
+    function confirmOrder() {
+      document.querySelector(".status").innerText = "Confirmed";
+    }
+    function readyOrder() {
+      document.querySelector(".status").innerText = "Ready";
+    }
+    function deliverOrder() {
+      document.querySelector(".status").innerText = "Delivered";
+    }
+    <script>
+  const punchlines = [
+    "Dream big, sip slow, build strong.",
+    "Coffee fuels the grind, crypto fuels the future.",
+    "Every sip is a vote for culture.",
+    "Stay true, the vibe will carry you."
+  ];
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % punchlines.length;
+    document.getElementById("punchline").innerText = punchlines[index];
+  }, 10000);
+
+  // Order flow
+  function confirmOrder() { document.querySelector(".status").innerText = "Confirmed"; }
+  function readyOrder() { document.querySelector(".status").innerText = "Ready"; }
+  function deliverOrder() { document.querySelector(".status").innerText = "Delivered"; }
+
+  // Cart system
+  let cart = [];
+  function addToCart(item, price, qty) {
+    cart.push({item, price, qty});
+    updateCart();
+  }
+  function updateCart() {
+    let total = 0;
+    let list = document.getElementById("cart-items");
+    list.innerHTML = "";
+    cart.forEach(c => {
+      total += c.price * c.qty;
+      list.innerHTML += `<li>${c.qty} x ${c.item} - $${c.price * c.qty}</li>`;
+    });
+    document.getElementById("cart-total").innerText = total.toFixed(2);
+  }
+  function checkout() { alert("Proceeding to payment..."); }
+
+  // Payment placeholders
+  function payMpesa() { alert("M-Pesa STK Push initiated..."); }
+  function payCrypto() { alert("Crypto wallet payment initiated..."); }
+  function payCard() { alert("Visa/PayPal payment initiated..."); }
+
+  // Tipping
+  function sendTip() {
+    const barista = document.getElementById("barista-select").value;
+    alert(`Tip sent to ${barista} in COFFEE tokens!`);
+  }
+</script>
+  </script>
+</body>
+</html>
